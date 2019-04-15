@@ -7,8 +7,8 @@ public class requestSummonerID {
     private int profileIconId;
     private String name;
     private String puuid;
-    private int summonerLevel;
+    private long summonerLevel;
     private String accountID;
     private String Id;
-    private int revisionDate;
+    private long revisionDate;
 }
