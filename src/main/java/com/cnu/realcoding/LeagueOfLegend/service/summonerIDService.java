@@ -1,7 +1,9 @@
 package com.cnu.realcoding.LeagueOfLegend.service;
 
+import com.cnu.realcoding.LeagueOfLegend.api.encryptedAPI;
 import com.cnu.realcoding.LeagueOfLegend.api.leagueOfLegendAPI;
 import com.cnu.realcoding.LeagueOfLegend.domain.requestSummonerID;
+import com.cnu.realcoding.LeagueOfLegend.repository.summonerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +17,17 @@ public class summonerIDService {
     @Autowired
     private leagueOfLegendAPI leagueOfLegendAPI;
 
+    @Autowired
+    private encryptedAPI encryptedAPI;
+
+    @Autowired
+    private summonerRepository summonerRepository;
 
     public requestSummonerID getSummonerID(String name){
-        requestSummonerID summonerid = leagueOfLegendAPI.getSummerID(name);
-        return summonerid;
+        requestSummonerID summonerBody = leagueOfLegendAPI.getSummerID(name);
+        requestSummonerID encryptedbody = encryptedAPI.getencryptedSummerID(summonerBody.getId());
+        summonerRepository.insertsummonerIDBody(encryptedbody);
+        return encryptedbody;
 
     }
 
