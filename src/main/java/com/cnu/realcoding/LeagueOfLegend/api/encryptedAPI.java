@@ -11,9 +11,8 @@ public class encryptedAPI {
 
     @Autowired
     private RestTemplate restTemplate;
-
-    private String requestUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonername}?api_key={apiKey}";
-
+    
+    private String requestUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/{id}?api_key={apikey}";
     public requestSummonerID getencryptedSummerID(String id){
         return restTemplate.exchange(requestUrl, HttpMethod.GET,null, requestSummonerID.class, id,"RGAPI-42ce6ee5-2d00-4a16-8dfd-32e98558cbd6")
                 .getBody();
