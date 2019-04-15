@@ -19,7 +19,7 @@ public class summonerIDService {
     public requestSummonerID getSummonerID(String name){
         requestSummonerID summonerid = leagueOfLegendAPI.getSummerID(name);
         return summonerid;
-        //summonerIDList.add(summonerID);
+
     }
 
     public List<requestSummonerID> getAllSUmmoner(){
