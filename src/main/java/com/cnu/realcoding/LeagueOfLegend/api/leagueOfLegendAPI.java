@@ -15,7 +15,7 @@ public class leagueOfLegendAPI {
     private String requestUrl = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summonername}?api_key={apiKey}";
 
     public requestSummonerID getSummerID(String summonerid){
-        return restTemplate.exchange(requestUrl, HttpMethod.GET,null, requestSummonerID.class, summonerid,"API")
+        return restTemplate.exchange(requestUrl, HttpMethod.GET,null, requestSummonerID.class, summonerid,"RGAPI-47f1400a-880a-4139-a72c-625cc6e7a266")
                 .getBody();
 
 
