@@ -1,5 +1,6 @@
 package com.cnu.realcoding.LeagueOfLegend.controller;
 
+import com.cnu.realcoding.LeagueOfLegend.domain.requestSummonerBody;
 import com.cnu.realcoding.LeagueOfLegend.domain.requestSummonerID;
 import com.cnu.realcoding.LeagueOfLegend.service.summonerIDService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +21,12 @@ public class summonerIDController {
     }*/
 
     @GetMapping("/summonerid")
-   public List<requestSummonerID> getAllSummonerID(){
-    return summonerIDService.getAllSUmmoner();
+    public List<requestSummonerBody> getAllSummonerID(){
+        return summonerIDService.getAllSUmmoner();
     }
 
     @GetMapping("/{name}")
-    public requestSummonerID getSummonerIDBody(@PathVariable String name){
+    public requestSummonerBody getSummonerIDBody(@PathVariable String name){
         return summonerIDService.getSummonerID(name);
     }
 }
