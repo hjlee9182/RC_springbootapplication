@@ -2,6 +2,7 @@ package com.cnu.realcoding.LeagueOfLegend.service;
 
 import com.cnu.realcoding.LeagueOfLegend.api.encryptedAPI;
 import com.cnu.realcoding.LeagueOfLegend.api.leagueOfLegendAPI;
+import com.cnu.realcoding.LeagueOfLegend.domain.requestSummonerBody;
 import com.cnu.realcoding.LeagueOfLegend.domain.requestSummonerID;
 import com.cnu.realcoding.LeagueOfLegend.repository.summonerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Service
 public class summonerIDService {
-    private List<requestSummonerID> summonerIDList = new ArrayList<>();
+    private List<requestSummonerBody> summonerIDList = new ArrayList<>();
 
     @Autowired
     private leagueOfLegendAPI leagueOfLegendAPI;
@@ -23,15 +24,15 @@ public class summonerIDService {
     @Autowired
     private summonerRepository summonerRepository;
 
-    public requestSummonerID getSummonerID(String name){
+    public requestSummonerBody getSummonerID(String name){
         requestSummonerID summonerBody = leagueOfLegendAPI.getSummerID(name);
-        requestSummonerID encryptedbody = encryptedAPI.getencryptedSummerID(summonerBody.getId());
-        summonerRepository.insertsummonerIDBody(encryptedbody);
-        return encryptedbody;
+        List<requestSummonerBody> encryptedbody = encryptedAPI.getencryptedSummerID(summonerBody.getId());
+        summonerRepository.insertsummonerIDBody(encryptedbody.get(0));
+        return encryptedbody.get(0);
 
     }
 
-    public List<requestSummonerID> getAllSUmmoner(){
+    public List<requestSummonerBody> getAllSUmmoner(){
         return summonerIDList;
     }
 
